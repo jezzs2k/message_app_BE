@@ -1,0 +1,5 @@
+{   
+    "Customer": {
+        "MONGO_URI": "mongodb+srv://jezzs:1711@cluster0.veizo.mongodb.net/message_app?retryWrites=true&w=majority"
+    }
+}
