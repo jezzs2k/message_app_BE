@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import {UserModule} from './users/user.module';
 import {MessModule} from './messages/message.module';
+import {AppGateway} from './socket/app.gateway';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('config');
@@ -18,8 +17,7 @@ const config = require('config');
       useFindAndModify: false,
     })
   }),UserModule, MessModule],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [AppGateway],
 })
 
 export class AppModule {}
