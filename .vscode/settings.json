@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/c957b182-2cc7-459f-a2ae-a9e8ca436e8e/resourceGroups/jezzs/providers/Microsoft.Web/sites/message-jezzs",
+    "appService.deploySubpath": "."
+}
