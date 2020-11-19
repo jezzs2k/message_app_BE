@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Mess, MessDocument} from './schemas/message.schemas';
-import {CreateMessDto, getMessDto, UpdateMess} from './dto/message.dto';
+import {CreateMessDto, UpdateMess} from './dto/message.dto';
 
 @Injectable()
 export class MessService {
@@ -13,10 +13,10 @@ export class MessService {
         return createMess.save();
     }
 
-    async getMess(infoMess: getMessDto) :Promise <Mess[]>{
+    async getMess(params: {converId: string}) :Promise <Mess[]>{
         const messages = await this.messModel.find({
-            conversationId: infoMess.conversationId
-        }).populate(['receiverUser', 'message.senderUser', 'replyMessId']);
+            conversationId: params.converId
+        }).populate(['receiverUser', 'message.senderUser', 'replyMessId']).sort({createdAt: -1});
 
         return messages;
     }

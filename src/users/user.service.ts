@@ -24,4 +24,10 @@ export class UserService{
 
         return users;
     }
+
+    async getUserByEmail (parmas: {email: string}) :Promise <User> {
+        const user = this.userModel.findOne({email: parmas.email})
+
+        return user;
+    }
 }

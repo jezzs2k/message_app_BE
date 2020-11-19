@@ -10,13 +10,12 @@ export class MessController {
     @Post()
     async sendMess(@Res() response: Response, @Body() createMess: CreateMessDto){
         const mess = await this.messService.sendMess(createMess);
-
         return response.jsonp({data: mess});
     }
 
-    @Get()
-    async getMessages(@Res() response: Response, @Body() infoMess: getMessDto){
-        const messages = await this.messService.getMess(infoMess);
+    @Get('/:converId')
+    async getMessages(@Param() params, @Res() response: Response){
+        const messages = await this.messService.getMess(params);
 
         return response.jsonp({data: {messages}, total: messages.length});
     }

@@ -26,4 +26,12 @@ export class UserController {
 
         return response.jsonp({data: users, total: users.length});
     }
+
+    @Get('/demo/:email')
+    async getUserByEmail(@Res() response: Response, @Param() Params) {
+        console.log(Params);
+        const user = await this.userService.getUserByEmail(Params);
+
+        return response.jsonp({data: user});
+    }
 }
